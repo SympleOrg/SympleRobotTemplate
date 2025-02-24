@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.teamcode.RobotConstants;
 import org.firstinspires.ftc.teamcode.maps.SensorMap;
-import org.firstinspires.ftc.teamcode.subsystems.driveTrain.DriveConstants;
 import org.firstinspires.ftc.teamcode.util.MathUtil;
 
 public class RobotPositionManager {
@@ -23,7 +23,7 @@ public class RobotPositionManager {
     private static RobotPositionManager instance;
 
     private RobotPositionManager(HardwareMap hardwareMap) {
-        BHI260IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(DriveConstants.LOGO_FACING_DIRECTION, DriveConstants.USB_FACING_DIRECTION));
+        BHI260IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(RobotConstants.DriveConstants.LOGO_FACING_DIRECTION, RobotConstants.DriveConstants.USB_FACING_DIRECTION));
         this.imu = hardwareMap.get(BHI260IMU.class, "imu");
         this.imu.initialize(parameters);
 
@@ -61,7 +61,7 @@ public class RobotPositionManager {
     public double getHeadingByWheels() {
         double right = this.getRightWheelDistanceDriven();
         double left = this.getLeftWheelDistanceDriven();
-        return Math.toDegrees((right - left) / DriveConstants.WHEELS_DISTANCE);
+        return Math.toDegrees((right - left) / RobotConstants.DriveConstants.WHEELS_DISTANCE);
     }
 
     public double getLeftWheelDistanceDriven() {

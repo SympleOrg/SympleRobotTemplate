@@ -5,7 +5,7 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.controller.PController;
 
-import org.firstinspires.ftc.teamcode.subsystems.driveTrain.DriveConstants;
+import org.firstinspires.ftc.teamcode.RobotConstants;
 import org.firstinspires.ftc.teamcode.subsystems.driveTrain.IDriveTrainSubsystem;
 import org.firstinspires.ftc.teamcode.util.DataLogger;
 
@@ -47,7 +47,7 @@ public class DriveDistanceDriveCommand extends CommandBase {
         double driveDistance = (this.subsystem.getForwardDistanceDriven() - this.STARTING_POS);
 
         double rawPower = this.pController.calculate(driveDistance);
-        rawPower += Math.signum(rawPower) * DriveConstants.Ks;
+        rawPower += Math.signum(rawPower) * RobotConstants.DriveConstants.Ks;
 
         double power = Math.min(Math.max(rawPower, -MAX_POWER), MAX_POWER);
 
