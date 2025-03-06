@@ -35,6 +35,7 @@ public abstract class StateSubsystemBase<T extends StateSubsystemBase.StateBase<
         );
     }
 
+    @FunctionalInterface
     public interface StateBase<U> {
         U getUnit();
     }
