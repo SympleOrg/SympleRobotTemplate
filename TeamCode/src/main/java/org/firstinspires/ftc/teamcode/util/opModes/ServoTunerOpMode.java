@@ -16,9 +16,29 @@ import org.firstinspires.ftc.teamcode.util.SympleServo;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} for tuning and testing servos.
+ *
+ * <p>This OpMode integrates with the FTC Dashboard via {@link com.acmerobotics.dashboard.config.Config},
+ * allowing the user to select a servo and set its target angle dynamically from the dashboard UI.</p>
+ *
+ * <p>Workflow:</p>
+ * <ol>
+ *     <li>Driver Station: select <b>Servo Tuner</b> TeleOp and press INIT.</li>
+ *     <li>Dashboard: adjust {@link #servoId} and {@link #angle} values.</li>
+ *     <li>OpMode shows servo list and highlights the current servo in telemetry.</li>
+ *     <li>Press PLAY: the servo is initialized, and pressing <b>X</b> on gamepad2
+ *         moves the servo to the configured {@link #angle}.</li>
+ * </ol>
+ */
 @Config
 @TeleOp(name = "Servo Tuner", group = "tune")
 public class ServoTunerOpMode extends CommandOpMode {
+
+    /**
+     * A mapping from integer IDs to available servos from {@link ServoMap}.
+     * Enables selection of servos by ID via the dashboard.
+     */
     private static final HashMap<Integer, ServoMap> SERVOS = new HashMap<>();
 
     static {
@@ -27,7 +47,17 @@ public class ServoTunerOpMode extends CommandOpMode {
             SERVOS.put(i, motors[i]);
         }
     }
+
+    /**
+     * The ID of the servo currently being tuned.
+     * <p>Adjustable from FTC Dashboard.</p>
+     */
     public static int servoId = 0;
+
+    /**
+     * The target angle to apply to the selected servo when activated.
+     * <p>Adjustable from FTC Dashboard.</p>
+     */
     public static double angle = 0;
 
     private GamepadEx gamepadEx;

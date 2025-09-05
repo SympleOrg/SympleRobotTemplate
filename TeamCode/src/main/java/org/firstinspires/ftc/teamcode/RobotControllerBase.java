@@ -44,21 +44,66 @@ public abstract class RobotControllerBase {
         RobotPositionManager.init(hardwareMap);
     }
 
+    /**
+     * Register all robot keybinds here.
+     * <p>
+     * Subclasses should implement this method to define all gamepad or controller bindings
+     * for robot actions.
+     * </p>
+     */
     public abstract void createKeyBindings();
+
+    /**
+     * Called once when the user presses the **Init** button.
+     * Use this to perform setup tasks before the robot starts running.
+     */
     public abstract void initialize();
+
+    /**
+     * Called repeatedly while the robot is in the **Init** phase,
+     * after {@link #initialize()} has been executed.
+     * Use this perform pre-start checks.
+     */
     public abstract void initializeLoop();
+
+    /**
+     * Called once when the user presses the **Play** button.
+     * Use this for any final setup before the main loop starts.
+     */
     public abstract void postInitialize();
+
+    /**
+     * Called repeatedly while the robot is running (after the **Play** button is pressed).
+     * This is the main loop for robot control logic during a match.
+     */
     public abstract void run();
+
+    /**
+     * Called once when the robot is stopped (after the **Stop** button is pressed).
+     * Use this to release resources or reset hardware states.
+     */
     public abstract void postRun();
 
+    /**
+     * See {@link Telemetry} for all the docs.
+     * @return {@link MultipleTelemetry}
+     */
     public MultipleTelemetry getTelemetry() {
         return telemetry;
     }
 
+    /**
+     * See {@link HardwareMap} for all the docs.
+     * @return {@link HardwareMap}
+     */
     public HardwareMap getHardwareMap() {
         return hardwareMap;
     }
 
+    /**
+     * See {@link HardwareMap} for all the docs.
+     * @return {@link DataLogger}
+     */
     public DataLogger getDataLogger() {
         return dataLogger;
     }
