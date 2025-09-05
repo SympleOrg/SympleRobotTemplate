@@ -16,9 +16,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * An {@link com.qualcomm.robotcore.eventloop.opmode.OpMode} for tuning and testing motors.
+ *
+ * <p>This OpMode integrates with the FTC Dashboard via {@link com.acmerobotics.dashboard.config.Config},
+ * allowing the user to select a motor and set its power dynamically from the dashboard UI.</p>
+ *
+ * <p>Workflow:</p>
+ * <ol>
+ *   <li>Driver Station: select <b>Motor Tuner</b> TeleOp and press INIT.</li>
+ *   <li>Dashboard: adjust {@link #motorId} and {@link #power} values.</li>
+ *   <li>OpMode shows motor list and highlights the current motor in telemetry.</li>
+ *   <li>Press PLAY: the motor is initialized, and pressing <b>X</b> on gamepad2
+ *       applies the configured {@link #power}.</li>
+ * </ol>
+ */
 @Config
 @TeleOp(name = "Motor Tuner", group = "tune")
 public class MotorTunerOpMode extends CommandOpMode {
+
+    /**
+     * A mapping from integer IDs to available motors from {@link MotorMap}.
+     * This enables selection of motors by ID via the dashboard.
+     */
     private static final HashMap<Integer, MotorMap> MOTORS = new HashMap<>();
 
     static {
@@ -28,7 +48,16 @@ public class MotorTunerOpMode extends CommandOpMode {
         }
     }
 
+    /**
+     * The ID of the motor currently being tuned.
+     * <p>Adjustable from FTC Dashboard.</p>
+     */
     public static int motorId = 0;
+
+    /**
+     * The power to apply to the selected motor when activated.
+     * <p>Adjustable from FTC Dashboard.</p>
+     */
     public static double power = 0;
 
     private GamepadEx gamepadEx;
