@@ -29,7 +29,7 @@ public class RobotConstants {
         /** Meters traveled per encoder tick. */
         public static final double METERS_PER_TICK = (METERS_PER_REV / (TICKS_PER_REV * GEAR_RATIO));
 
-        /** Feedforward constant (Ks) for drive calculations, currently 0. */
+        /** Feedforward constant (Ks) */
         public static final double Ks = 0;
 
         /** Orientation of the REV Hub logo on the robot. */
