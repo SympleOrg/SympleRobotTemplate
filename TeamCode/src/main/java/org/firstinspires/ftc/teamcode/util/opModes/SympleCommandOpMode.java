@@ -11,37 +11,45 @@ public abstract class SympleCommandOpMode extends CommandOpMode {
 
     @Override
     public void runOpMode() {
-        this.initialize();
+        try {
+            this.initialize();
 
-        if(robotController == null) {
-            telemetry.addData("Err", "Please initialize the robot first");
-            this.reset();
-            return;
+            if(robotController == null) {
+                telemetry.addData("Err", "Please initialize the robot first");
+                this.reset();
+                return;
+            }
+
+            robotController.createKeyBindings();
+            robotController.initialize();
+
+            // runs when in init mode
+            while (this.opModeInInit() && !this.isStopRequested()) {
+                robotController.initializeLoop();
+                SympleGraphDisplay.getInstance().run();
+                this.robotController.getTelemetry().update();
+            }
+
+            this.waitForStart();
+
+            robotController.postInitialize();
+
+            // run the scheduler
+            while (!isStopRequested() && opModeIsActive()) {
+                this.run();
+                robotController.run();
+                SympleGraphDisplay.getInstance().run();
+                this.robotController.getTelemetry().update();
+            }
+
+            robotController.postRun();
+        } catch (Exception exception) {
+            if(robotController != null) {
+                robotController.getDataLogger().addThrowable(exception);
+            }
+            throw exception;
         }
 
-        robotController.createKeyBindings();
-        robotController.initialize();
-
-        // runs when in init mode
-        while (this.opModeInInit() && !this.isStopRequested()) {
-            robotController.initializeLoop();
-            SympleGraphDisplay.getInstance().run();
-            this.robotController.getTelemetry().update();
-        }
-
-        this.waitForStart();
-
-        robotController.postInitialize();
-
-        // run the scheduler
-        while (!isStopRequested() && opModeIsActive()) {
-            this.run();
-            robotController.run();
-            SympleGraphDisplay.getInstance().run();
-            this.robotController.getTelemetry().update();
-        }
-
-        robotController.postRun();
         this.reset();
     }
 }
