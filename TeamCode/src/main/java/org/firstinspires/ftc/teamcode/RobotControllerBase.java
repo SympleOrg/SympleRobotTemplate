@@ -45,7 +45,11 @@ public abstract class RobotControllerBase {
     }
 
     /**
-     * Put all keybinds registration here
+     * Register all robot keybinds here.
+     * <p>
+     * Subclasses should implement this method to define all gamepad or controller bindings
+     * for robot actions.
+     * </p>
      */
     public abstract void createKeyBindings();
 
