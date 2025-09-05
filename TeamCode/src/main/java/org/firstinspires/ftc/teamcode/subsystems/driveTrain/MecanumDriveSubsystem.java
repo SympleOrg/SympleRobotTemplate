@@ -13,8 +13,6 @@ import org.firstinspires.ftc.teamcode.util.DataLogger;
 import org.firstinspires.ftc.teamcode.util.drivetrain.MecanumChassisUtils;
 import org.firstinspires.ftc.teamcode.util.drivetrain.MecanumWheelSet;
 
-import java.util.HashMap;
-
 public class MecanumDriveSubsystem extends SubsystemBase implements IDriveTrainSubsystem {
     private final MultipleTelemetry telemetry;
     private final DataLogger dataLogger;
@@ -91,12 +89,5 @@ public class MecanumDriveSubsystem extends SubsystemBase implements IDriveTrainS
     @Override
     public MultipleTelemetry getTelemetry() {
         return this.telemetry;
-    }
-
-    public enum MotorNames {
-        FRONT_RIGHT,
-        FRONT_LEFT,
-        BACK_LEFT,
-        BACK_RIGHT
     }
 }

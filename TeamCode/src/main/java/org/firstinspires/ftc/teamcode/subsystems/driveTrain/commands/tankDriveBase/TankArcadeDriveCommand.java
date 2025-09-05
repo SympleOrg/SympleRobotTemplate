@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.subsystems.driveTrain.TankDriveSubsystem;
 
+@Deprecated
 public class TankArcadeDriveCommand extends CommandBase {
     private final GamepadEx controller;
 

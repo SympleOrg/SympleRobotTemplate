@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.managers.RobotPositionManager;
 import org.firstinspires.ftc.teamcode.util.DataLogger;
 
 // !!! THIS CODE IS OUTDATED AND DIDN'T GET TESTED ON THE NEW ROBOT !!!
+@Deprecated
 public class TankDriveSubsystem extends SubsystemBase implements IDriveTrainSubsystem {
     private final MultipleTelemetry telemetry;
     private final DataLogger dataLogger;

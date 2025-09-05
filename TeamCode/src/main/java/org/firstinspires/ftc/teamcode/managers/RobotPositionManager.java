@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.RobotConstants;
+import org.firstinspires.ftc.teamcode.RobotConstants.DriveConstants;
 import org.firstinspires.ftc.teamcode.maps.SensorMap;
 import org.firstinspires.ftc.teamcode.util.MathUtil;
 
@@ -18,12 +18,12 @@ public class RobotPositionManager {
     private final MotorEx leftDeadWheel;
     private final MotorEx backDeadWheel;
 
-    private final double startingAngle;
+    private double startingAngle;
 
     private static RobotPositionManager instance;
 
     private RobotPositionManager(HardwareMap hardwareMap) {
-        BHI260IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(RobotConstants.DriveConstants.LOGO_FACING_DIRECTION, RobotConstants.DriveConstants.USB_FACING_DIRECTION));
+        BHI260IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(DriveConstants.LOGO_FACING_DIRECTION, DriveConstants.USB_FACING_DIRECTION));
         this.imu = hardwareMap.get(BHI260IMU.class, "imu");
         this.imu.initialize(parameters);
 
@@ -61,18 +61,26 @@ public class RobotPositionManager {
     public double getHeadingByWheels() {
         double right = this.getRightWheelDistanceDriven();
         double left = this.getLeftWheelDistanceDriven();
-        return Math.toDegrees((right - left) / RobotConstants.DriveConstants.WHEELS_DISTANCE);
+        return Math.toDegrees((right - left) / DriveConstants.WHEELS_DISTANCE);
+    }
+
+    public void resetHeading() {
+        this.startingAngle = getHeadingByGyro();
     }
 
     public double getLeftWheelDistanceDriven() {
-        return MathUtil.encoderTicksToMeter(this.leftDeadWheel.getCurrentPosition());
+        return this.encoderTicksToMeter(this.leftDeadWheel.getCurrentPosition());
     }
 
     public double getRightWheelDistanceDriven() {
-        return MathUtil.encoderTicksToMeter(this.rightDeadWheel.getCurrentPosition());
+        return this.encoderTicksToMeter(this.rightDeadWheel.getCurrentPosition());
     }
 
     public double getBackWheelDistanceDriven() {
-        return MathUtil.encoderTicksToMeter(this.backDeadWheel.getCurrentPosition());
+        return this.encoderTicksToMeter(this.backDeadWheel.getCurrentPosition());
+    }
+
+    private double encoderTicksToMeter(double ticks) {
+        return MathUtil.encoderTicksToMeter(ticks, DriveConstants.WHEEL_RADIUS, DriveConstants.TICKS_PER_REV, DriveConstants.GEAR_RATIO);
     }
 }
