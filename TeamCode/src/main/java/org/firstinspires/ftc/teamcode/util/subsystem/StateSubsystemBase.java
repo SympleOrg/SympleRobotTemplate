@@ -115,6 +115,13 @@ public abstract class StateSubsystemBase<T extends StateSubsystemBase.StateBase<
         );
     }
 
+    protected Subsystem[] mergeSubsystemLists(Subsystem[] original, Subsystem... toMerge) {
+        Subsystem[] result = new Subsystem[original.length + toMerge.length];
+        System.arraycopy(toMerge, 0, result, 0, toMerge.length);
+        System.arraycopy(original, 0, result, toMerge.length, original.length);
+        return result;
+    }
+
     /**
      * A functional interface representing a valid state for a subsystem.
      * <p>States may wrap arbitrary values (such as enums, strings, or constants)
