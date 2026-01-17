@@ -10,9 +10,7 @@ import com.seattlesolvers.solverslib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.seattlesolvers.solverslib.hardware.servos.ServoEx;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.maps.ServoMap;
-import org.firstinspires.ftc.teamcode.util.SympleServo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,10 +86,10 @@ public class ServoTunerOpMode extends CommandOpMode {
     }
 
     private void postInitialize() {
-        servo = new ServoEx(hardwareMap, servoName.getId(), 0.0, 300.0, AngleUnit.DEGREES);
+        servo = new ServoEx(hardwareMap, servoName.getId(), 0.0, 300.0);
 
         gamepadEx.getGamepadButton(GamepadKeys.Button.X)
-                .whenPressed(new InstantCommand(() -> servo.turnToAngle(angle)));
+                .whenPressed(new InstantCommand(() -> servo.set(angle)));
     }
 
     @Override
