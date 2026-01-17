@@ -31,12 +31,12 @@ public class MecanumWheelSet {
             MotorEx frontLeft, MotorEx frontRight,
             MotorEx backLeft, MotorEx backRight
     ) {
-        this.motors = new HashMap<MecanumWheel, MotorEx>(){{
-            put(MecanumWheel.FRONT_LEFT, frontLeft);
-            put(MecanumWheel.FRONT_RIGHT, frontRight);
-            put(MecanumWheel.BACK_LEFT, backLeft);
-            put(MecanumWheel.BACK_RIGHT, backRight);
-        }};
+        this.motors = new HashMap<>();
+
+        this.motors.put(MecanumWheel.FRONT_LEFT, frontLeft);
+        this.motors.put(MecanumWheel.FRONT_RIGHT, frontRight);
+        this.motors.put(MecanumWheel.BACK_LEFT, backLeft);
+        this.motors.put(MecanumWheel.BACK_RIGHT, backRight);
     }
 
     /**

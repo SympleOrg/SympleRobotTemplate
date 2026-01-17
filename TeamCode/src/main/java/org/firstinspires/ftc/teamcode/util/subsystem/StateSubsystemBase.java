@@ -65,7 +65,7 @@ public abstract class StateSubsystemBase<T extends StateSubsystemBase.StateBase<
      * @return a command that applies the state transition
      */
     public final Command goToState(T state, Subsystem... requirements) {
-        return new InstantCommand(() -> this.setState(state))
+        return new InstantCommand(() -> this.setState(state), this)
                 .andThen(this.getChangeStateCommand(state, requirements));
     }
 
