@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.util.subsystem;
 
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.bylazar.telemetry.JoinedTelemetry;
 
 import org.firstinspires.ftc.teamcode.util.DataLogger;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -18,11 +18,11 @@ public interface LoggerSubsystem {
     /**
      * Returns the telemetry object for real-time data reporting.
      * <p>This is typically a {@link Telemetry}
-     * wrapped inside a {@link MultipleTelemetry} instance.</p>
+     * wrapped inside a {@link JoinedTelemetry} instance.</p>
      *
      * @return the telemetry instance used for reporting data to the driver station/dashboard
      */
-    MultipleTelemetry getTelemetry();
+    JoinedTelemetry getTelemetry();
     /**
      * Returns the persistent data logger used for file-based logging.
      *

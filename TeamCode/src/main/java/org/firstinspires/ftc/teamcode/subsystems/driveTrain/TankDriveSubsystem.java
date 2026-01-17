@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.subsystems.driveTrain;
 
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.bylazar.telemetry.JoinedTelemetry;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -11,14 +11,14 @@ import org.firstinspires.ftc.teamcode.util.DataLogger;
 // !!! THIS CODE IS OUTDATED AND DIDN'T GET TESTED ON THE NEW ROBOT !!!
 @Deprecated
 public class TankDriveSubsystem extends SubsystemBase implements IDriveTrainSubsystem {
-    private final MultipleTelemetry telemetry;
+    private final JoinedTelemetry telemetry;
     private final DataLogger dataLogger;
 
     private boolean invert = false;
 
     private final MotorEx leftMotor, rightMotor;
 
-    public TankDriveSubsystem(HardwareMap hardwareMap, MultipleTelemetry telemetry, DataLogger dataLogger) {
+    public TankDriveSubsystem(HardwareMap hardwareMap, JoinedTelemetry telemetry, DataLogger dataLogger) {
         this.telemetry = telemetry;
         this.dataLogger = dataLogger;
 
@@ -49,7 +49,7 @@ public class TankDriveSubsystem extends SubsystemBase implements IDriveTrainSubs
     }
 
     @Override
-    public MultipleTelemetry getTelemetry() {
+    public JoinedTelemetry getTelemetry() {
         return this.telemetry;
     }
 

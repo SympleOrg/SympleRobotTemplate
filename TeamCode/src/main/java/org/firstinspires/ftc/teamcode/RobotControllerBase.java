@@ -1,7 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.bylazar.camerastream.PanelsCameraStream;
+import com.bylazar.telemetry.JoinedTelemetry;
+import com.bylazar.telemetry.PanelsTelemetry;
 import com.seattlesolvers.solverslib.command.CommandScheduler;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -17,12 +18,12 @@ public abstract class RobotControllerBase {
     public final GamepadEx actionController;
 
     private final HardwareMap hardwareMap;
-    private final MultipleTelemetry telemetry;
+    private final JoinedTelemetry telemetry;
     private final DataLogger dataLogger;
 
     public RobotControllerBase(HardwareMap hMap, Telemetry telemetry, Gamepad driverController, Gamepad actionController, String logFilePrefix, boolean logData) {
         this.hardwareMap = hMap;
-        this.telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+        this.telemetry = new JoinedTelemetry(PanelsTelemetry.INSTANCE.getFtcTelemetry(), telemetry);
         this.dataLogger = new DataLogger(logFilePrefix, !logData);
 
         this.dataLogger.addData(DataLogger.DataType.INFO, "RobotController: Initializing...");
@@ -32,7 +33,7 @@ public abstract class RobotControllerBase {
 
         // Reset the robot state
         this.dataLogger.addData(DataLogger.DataType.INFO, "RobotController: resetting robot");
-        FtcDashboard.getInstance().stopCameraStream();
+        PanelsCameraStream.INSTANCE.stopStream();
         CommandScheduler.getInstance().reset();
         RobotPositionManager.init(hardwareMap);
     }
@@ -79,9 +80,9 @@ public abstract class RobotControllerBase {
 
     /**
      * See {@link Telemetry} for all the docs.
-     * @return {@link MultipleTelemetry}
+     * @return {@link JoinedTelemetry}
      */
-    public MultipleTelemetry getTelemetry() {
+    public JoinedTelemetry getTelemetry() {
         return telemetry;
     }
 

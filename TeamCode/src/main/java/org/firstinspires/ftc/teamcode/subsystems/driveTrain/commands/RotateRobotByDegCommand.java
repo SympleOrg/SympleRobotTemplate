@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode.subsystems.driveTrain.commands;
 
-import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.bylazar.configurables.annotations.Configurable;
+import com.bylazar.telemetry.JoinedTelemetry;
 import com.seattlesolvers.solverslib.command.CommandBase;
 import com.seattlesolvers.solverslib.controller.PIDController;
 
 import org.firstinspires.ftc.teamcode.subsystems.driveTrain.IDriveTrainSubsystem;
 import org.firstinspires.ftc.teamcode.util.DataLogger;
 
-@Config
+@Configurable
 public class RotateRobotByDegCommand extends CommandBase {
     public static double Kp = 0.09;
     public static double Kd = 0.005;
@@ -48,7 +48,7 @@ public class RotateRobotByDegCommand extends CommandBase {
 
         double power = Math.min(Math.max(rawPower, -MAX_POWER), MAX_POWER);
 
-        MultipleTelemetry telemetry = this.subsystem.getTelemetry();
+        JoinedTelemetry telemetry = this.subsystem.getTelemetry();
         telemetry.addData("----", this.getClass().getSimpleName() + " :----");
         telemetry.addData("Current Power", power);
         telemetry.addData("Distance Error", distLeft);

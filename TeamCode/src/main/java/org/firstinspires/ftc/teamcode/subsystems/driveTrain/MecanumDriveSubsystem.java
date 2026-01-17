@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.subsystems.driveTrain;
 
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.bylazar.telemetry.JoinedTelemetry;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 import com.seattlesolvers.solverslib.hardware.motors.Motor;
 import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
@@ -14,13 +14,13 @@ import org.firstinspires.ftc.teamcode.util.drivetrain.MecanumChassisUtils;
 import org.firstinspires.ftc.teamcode.util.drivetrain.MecanumWheelSet;
 
 public class MecanumDriveSubsystem extends SubsystemBase implements IDriveTrainSubsystem {
-    private final MultipleTelemetry telemetry;
+    private final JoinedTelemetry telemetry;
     private final DataLogger dataLogger;
     private final MecanumWheelSet wheelSet;
 
     private DriveConstants.DriveSpeed driveSpeedModifier = DriveConstants.DriveSpeed.NORMAL;
 
-    public MecanumDriveSubsystem(HardwareMap hardwareMap, MultipleTelemetry telemetry, DataLogger dataLogger) {
+    public MecanumDriveSubsystem(HardwareMap hardwareMap, JoinedTelemetry telemetry, DataLogger dataLogger) {
         this.telemetry = telemetry;
         this.dataLogger = dataLogger;
 
@@ -87,7 +87,7 @@ public class MecanumDriveSubsystem extends SubsystemBase implements IDriveTrainS
     }
 
     @Override
-    public MultipleTelemetry getTelemetry() {
+    public JoinedTelemetry getTelemetry() {
         return this.telemetry;
     }
 }
