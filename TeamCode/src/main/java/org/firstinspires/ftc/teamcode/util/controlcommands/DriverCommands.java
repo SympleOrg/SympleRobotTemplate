@@ -5,7 +5,9 @@ import org.firstinspires.ftc.teamcode.subsystems.driveTrain.MecanumDriveSubsyste
 public class DriverCommands {
     private final MecanumDriveSubsystem mecanumDriveSubsystem;
 
-    public DriverCommands(MecanumDriveSubsystem mecanumDriveSubsystem) {
+    public DriverCommands(
+            MecanumDriveSubsystem mecanumDriveSubsystem
+    ) {
         this.mecanumDriveSubsystem = mecanumDriveSubsystem;
     }
 

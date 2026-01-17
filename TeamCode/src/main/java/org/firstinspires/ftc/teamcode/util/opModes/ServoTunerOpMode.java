@@ -8,9 +8,9 @@ import com.seattlesolvers.solverslib.command.InstantCommand;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 import com.seattlesolvers.solverslib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.seattlesolvers.solverslib.hardware.servos.ServoEx;
 
 import org.firstinspires.ftc.teamcode.maps.ServoMap;
+import org.firstinspires.ftc.teamcode.util.SympleServo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,7 +61,7 @@ public class ServoTunerOpMode extends CommandOpMode {
 
     private GamepadEx gamepadEx;
     private ServoMap servoName;
-    private ServoEx servo;
+    private SympleServo servo;
 
     @Override
     public void initialize() {
@@ -86,7 +86,7 @@ public class ServoTunerOpMode extends CommandOpMode {
     }
 
     private void postInitialize() {
-        servo = new ServoEx(hardwareMap, servoName.getId(), 0.0, 300.0);
+        servo = new SympleServo(hardwareMap, servoName.getId(), 0.0, 300.0);
 
         gamepadEx.getGamepadButton(GamepadKeys.Button.X)
                 .whenPressed(new InstantCommand(() -> servo.set(angle)));

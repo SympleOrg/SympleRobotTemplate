@@ -5,7 +5,9 @@ import org.firstinspires.ftc.teamcode.subsystems.driveTrain.MecanumDriveSubsyste
 public class ActuatorCommands {
     private final MecanumDriveSubsystem mecanumDriveSubsystem;
 
-    public ActuatorCommands(MecanumDriveSubsystem mecanumDriveSubsystem) {
+    public ActuatorCommands(
+            MecanumDriveSubsystem mecanumDriveSubsystem
+    ) {
         this.mecanumDriveSubsystem = mecanumDriveSubsystem;
     }
 
