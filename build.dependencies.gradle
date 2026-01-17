@@ -2,7 +2,7 @@ repositories {
     mavenCentral()
     google() // Needed for androidx
     maven { url = 'https://maven.brott.dev/' }
-    maven { url = "https://Symple25125:ghp_${new String("ozADyfsgVNxC2ujphTXAiEMPwQkUdR4LmPha")}@maven.pkg.github.com/SympleOrg/SympleGraphDisplay" }
+    maven { url = "https://repo.dairy.foundation/releases" }
 }
 
 dependencies {
@@ -15,8 +15,6 @@ dependencies {
     implementation 'org.firstinspires.ftc:FtcCommon:11.0.0'
     implementation 'org.firstinspires.ftc:Vision:11.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.acmerobotics.dashboard:dashboard:0.4.16'
-
-    implementation 'top.symple:symplegraphdisplay:1.1.0'
+    implementation 'com.acmerobotics.dashboard:dashboard:0.5.1'
 }
 

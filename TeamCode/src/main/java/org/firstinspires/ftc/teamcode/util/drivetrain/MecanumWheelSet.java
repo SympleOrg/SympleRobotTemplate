@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.util.drivetrain;
 
-import com.arcrobotics.ftclib.hardware.motors.Motor;
-import com.arcrobotics.ftclib.hardware.motors.MotorEx;
+import com.seattlesolvers.solverslib.hardware.motors.Motor;
+import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
 
 import java.util.HashMap;
 

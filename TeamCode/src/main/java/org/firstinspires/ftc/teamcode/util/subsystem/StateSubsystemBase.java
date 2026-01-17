@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode.util.subsystem;
 
-import com.arcrobotics.ftclib.command.Command;
-import com.arcrobotics.ftclib.command.ConditionalCommand;
-import com.arcrobotics.ftclib.command.Subsystem;
-import com.arcrobotics.ftclib.command.SubsystemBase;
+import com.seattlesolvers.solverslib.command.Command;
+import com.seattlesolvers.solverslib.command.ConditionalCommand;
+import com.seattlesolvers.solverslib.command.InstantCommand;
+import com.seattlesolvers.solverslib.command.Subsystem;
+import com.seattlesolvers.solverslib.command.SubsystemBase;
 
 /**
  * A base class for subsystems that operate in discrete states.
@@ -64,8 +65,8 @@ public abstract class StateSubsystemBase<T extends StateSubsystemBase.StateBase<
      * @return a command that applies the state transition
      */
     public final Command goToState(T state, Subsystem... requirements) {
-        this.setState(state);
-        return this.getChangeStateCommand(state, requirements);
+        return new InstantCommand(() -> this.setState(state))
+                .andThen(this.getChangeStateCommand(state, requirements));
     }
 
     /**

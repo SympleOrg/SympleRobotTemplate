@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.arcrobotics.ftclib.command.CommandScheduler;
-import com.arcrobotics.ftclib.gamepad.GamepadEx;
+import com.seattlesolvers.solverslib.command.CommandScheduler;
+import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -12,12 +12,7 @@ import org.firstinspires.ftc.teamcode.managers.RobotPositionManager;
 import org.firstinspires.ftc.teamcode.util.DataLogger;
 import org.firstinspires.ftc.teamcode.util.opModes.SympleCommandOpMode;
 
-import top.symple.symplegraphdisplay.GraphSettings;
-import top.symple.symplegraphdisplay.SympleGraphDisplay;
-
 public abstract class RobotControllerBase {
-    private static final GraphSettings DEFAULT_SYMPLE_GRAPH_DISPLAY_SETTINGS = new GraphSettings();
-
     public final GamepadEx driverController;
     public final GamepadEx actionController;
 
@@ -38,8 +33,6 @@ public abstract class RobotControllerBase {
         // Reset the robot state
         this.dataLogger.addData(DataLogger.DataType.INFO, "RobotController: resetting robot");
         FtcDashboard.getInstance().stopCameraStream();
-        SympleGraphDisplay.getInstance().reset();
-        SympleGraphDisplay.getInstance().setSetting(DEFAULT_SYMPLE_GRAPH_DISPLAY_SETTINGS);
         CommandScheduler.getInstance().reset();
         RobotPositionManager.init(hardwareMap);
     }

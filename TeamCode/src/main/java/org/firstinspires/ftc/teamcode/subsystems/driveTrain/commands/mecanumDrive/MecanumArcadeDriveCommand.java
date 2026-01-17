@@ -1,8 +1,8 @@
 package org.firstinspires.ftc.teamcode.subsystems.driveTrain.commands.mecanumDrive;
 
-import com.arcrobotics.ftclib.command.CommandBase;
-import com.arcrobotics.ftclib.gamepad.GamepadEx;
-import com.arcrobotics.ftclib.geometry.Vector2d;
+import com.seattlesolvers.solverslib.command.CommandBase;
+import com.seattlesolvers.solverslib.gamepad.GamepadEx;
+import com.seattlesolvers.solverslib.geometry.Vector2d;
 
 import org.firstinspires.ftc.teamcode.subsystems.driveTrain.MecanumDriveSubsystem;
 import org.firstinspires.ftc.teamcode.util.drivetrain.MecanumChassisUtils;

@@ -1,10 +1,8 @@
 package org.firstinspires.ftc.teamcode.util.opModes;
 
-import com.arcrobotics.ftclib.command.CommandOpMode;
+import com.seattlesolvers.solverslib.command.CommandOpMode;
 
 import org.firstinspires.ftc.teamcode.RobotControllerBase;
-
-import top.symple.symplegraphdisplay.SympleGraphDisplay;
 
 /**
  * Abstract base class for a Symple Command-based OpMode.
@@ -56,7 +54,6 @@ public abstract class SympleCommandOpMode extends CommandOpMode {
             // Init-mode loop
             while (this.opModeInInit() && !this.isStopRequested()) {
                 robotController.initializeLoop();
-                SympleGraphDisplay.getInstance().run();
                 this.robotController.getTelemetry().update();
             }
 
@@ -70,7 +67,6 @@ public abstract class SympleCommandOpMode extends CommandOpMode {
             while (!isStopRequested() && opModeIsActive()) {
                 this.run(); // Call subclass run
                 robotController.run(); // Run robot logic
-                SympleGraphDisplay.getInstance().run(); // Update graphs
                 this.robotController.getTelemetry().update(); // Update telemetry
             }
 

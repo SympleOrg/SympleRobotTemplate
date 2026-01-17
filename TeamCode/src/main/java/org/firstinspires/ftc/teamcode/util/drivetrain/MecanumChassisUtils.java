@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.util.drivetrain;
 
-import com.arcrobotics.ftclib.geometry.Vector2d;
+import com.seattlesolvers.solverslib.geometry.Vector2d;
 
 /**
  * Utility class for Mecanum drivetrain calculations.
